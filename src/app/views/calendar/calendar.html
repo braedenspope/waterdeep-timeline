@@ -1,1 +1,62 @@
-<p>calendar works!</p>
+<div class="calendar-container">
+  <!-- Header -->
+  <header class="calendar-header">
+    <h1>Calendar View</h1>
+    
+    <!-- Month/Year Display with Navigation -->
+    <div class="month-navigation">
+      <button (click)="previousMonth()" class="nav-button">
+        ← Previous Month
+      </button>
+      
+      <div class="current-month">
+        <h2>{{ getCurrentMonthName() }} {{ getCurrentYear() }}</h2>
+      </div>
+      
+      <button (click)="nextMonth()" class="nav-button">
+        Next Month →
+      </button>
+    </div>
+  </header>
+
+  <!-- Calendar Grid -->
+  <main class="calendar-grid">
+    <div 
+      *ngFor="let day of daysInMonth()" 
+      class="day-cell"
+      [class.current-day]="isCurrentDay(day)"
+      [class.has-events]="getEventsForDay(day).length > 0"
+      (click)="selectDate(day)">
+      
+      <!-- Day number -->
+      <div class="day-number">{{ day }}</div>
+      
+      <!-- Event indicators -->
+      <div class="events-list" *ngIf="getEventsForDay(day).length > 0">
+        <div 
+          *ngFor="let event of getEventsForDay(day)" 
+          class="event-indicator"
+          [title]="event.title">
+          {{ event.title }}
+        </div>
+      </div>
+      
+      <!-- Event count badge -->
+      <div class="event-count-badge" *ngIf="getEventsForDay(day).length > 0">
+        {{ getEventsForDay(day).length }}
+      </div>
+    </div>
+  </main>
+
+  <!-- Legend -->
+  <div class="calendar-legend">
+    <div class="legend-item">
+      <span class="legend-color current"></span>
+      <span>Current Day</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color has-event"></span>
+      <span>Has Events</span>
+    </div>
+  </div>
+</div>

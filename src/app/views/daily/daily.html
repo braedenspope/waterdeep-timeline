@@ -1,1 +1,66 @@
-<p>daily works!</p>
+<div class="daily-container">
+  <!-- Header with current date -->
+  <header class="daily-header">
+    <h1>Daily View</h1>
+    
+    <!-- Date Display -->
+    <div class="current-date">
+      <div class="date-display">
+        <span class="day">{{ timelineService.currentDate().day }}</span>
+        <span class="month">{{ getMonthName(timelineService.currentDate().month) }}</span>
+        <span class="year">{{ timelineService.currentDate().year }}</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+      <button (click)="timelineService.goToPreviousDay()" class="nav-button">
+        ← Previous Day
+      </button>
+      <button (click)="timelineService.goToNextDay()" class="nav-button">
+        Next Day →
+      </button>
+    </div>
+
+    <!-- Event count for today -->
+    <p class="event-count">
+      {{ timelineService.eventsForCurrentDate().length }} 
+      {{ timelineService.eventsForCurrentDate().length === 1 ? 'event' : 'events' }} today
+    </p>
+  </header>
+
+  <!-- Events for current day -->
+  <main class="daily-content">
+    <div *ngIf="timelineService.eventsForCurrentDate().length > 0; else noEvents">
+      <div *ngFor="let event of timelineService.eventsForCurrentDate()" class="event-card">
+        <h2>{{ event.title }}</h2>
+        <p class="description">{{ event.description }}</p>
+
+        <div class="event-details">
+          <div class="location">
+            <strong>📍 Location:</strong> {{ event.location.name }}
+            <span class="ward">({{ event.location.ward }})</span>
+          </div>
+
+          <div class="characters" *ngIf="event.involvedCharacters.length > 0">
+            <strong>👥 Characters:</strong>
+            <ul>
+              <li *ngFor="let character of event.involvedCharacters">
+                <strong>{{ character.name }}</strong> - {{ character.class }} ({{ character.race }})
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state template -->
+    <ng-template #noEvents>
+      <div class="empty-state">
+        <div class="empty-icon">📅</div>
+        <h2>No events scheduled</h2>
+        <p>This day is free! Use the navigation to explore other days.</p>
+      </div>
+    </ng-template>
+  </main>
+</div>

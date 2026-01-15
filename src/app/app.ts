@@ -9,10 +9,12 @@ import { CharacterClass } from './models/character-class.enum';
 import { TimelineService } from './services/timeline';
 import { HARPTOS_MONTHS, HARPTOS_FESTIVALS } from './models/harptos-date.model';
 import { Timeline } from './views/timeline/timeline';  
+import { Daily } from './views/daily/daily';
+import { Calendar } from './views/calendar/calendar';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, Timeline],
+  imports: [CommonModule, Timeline, Daily, Calendar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

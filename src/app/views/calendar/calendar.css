@@ -1,0 +1,205 @@
+.calendar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.calendar-header h1 {
+  color: #3f51b5;
+  margin-bottom: 30px;
+}
+
+/* Month navigation */
+.month-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.current-month h2 {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+  min-width: 300px;
+}
+
+.nav-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-button:hover {
+  background: #303f9f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Calendar Grid - 6 columns */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  margin: 40px 0;
+}
+
+/* Individual day cell */
+.day-cell {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 120px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.day-cell:hover {
+  border-color: #3f51b5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Current day highlighting */
+.day-cell.current-day {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.day-cell.current-day .day-number {
+  color: white;
+}
+
+/* Days with events */
+.day-cell.has-events {
+  border-color: #4caf50;
+  background: #f1f8f4;
+}
+
+.day-cell.current-day.has-events {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Day number */
+.day-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Event indicators */
+.events-list {
+  margin-top: 10px;
+}
+
+.event-indicator {
+  background: #3f51b5;
+  color: white;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-day .event-indicator {
+  background: white;
+  color: #667eea;
+}
+
+/* Event count badge */
+.event-count-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #4caf50;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.current-day .event-count-badge {
+  background: white;
+  color: #667eea;
+}
+
+/* Legend */
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 2px solid #ddd;
+}
+
+.legend-color.current {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+.legend-color.has-event {
+  background: #f1f8f4;
+  border-color: #4caf50;
+}
+
+/* Responsive - smaller screens */
+@media (max-width: 1200px) {
+  .calendar-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .day-cell {
+    min-height: 100px;
+    padding: 10px;
+  }
+}
