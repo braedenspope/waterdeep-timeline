@@ -7,11 +7,12 @@ import { Location } from './models/location.model';
 import { CityWard } from './models/city-ward.enum';
 import { CharacterClass } from './models/character-class.enum';
 import { TimelineService } from './services/timeline';
-import { HARPTOS_MONTHS, HARPTOS_FESTIVALS } from './models/harptos-date.model';  
+import { HARPTOS_MONTHS, HARPTOS_FESTIVALS } from './models/harptos-date.model';
+import { Timeline } from './views/timeline/timeline';  
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, Timeline],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

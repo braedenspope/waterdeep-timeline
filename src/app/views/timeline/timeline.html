@@ -1,0 +1,45 @@
+<div class="timeline-container">
+  <header>
+    <h1>Campaign Timeline</h1>
+    <p class="event-count">{{ timelineService.eventCount() }} Total Events</p>
+  </header>
+
+  <div class="timeline-events">
+    <div *ngFor="let event of timelineService.getSortedEvents()" class="timeline-event">
+      <!-- Date Badge -->
+      <div class="event-date-badge">
+        <span class="day">{{ event.date.day }}</span>
+        <span class="month">{{ getMonthName(event.date.month) }}</span>
+        <span class="year">{{ event.date.year }}</span>
+      </div>
+
+      <!-- Event Content -->
+      <div class="event-content">
+        <h2>{{ event.title }}</h2>
+        <p class="description">{{ event.description }}</p>
+
+        <div class="event-meta">
+          <div class="location">
+            <strong>📍</strong> {{ event.location.name }} ({{ event.location.ward }})
+          </div>
+          @if (event.involvedCharacters.length > 0) {
+          <div class="characters">
+            <strong>👥 Characters:</strong>
+            <span *ngFor="let character of event.involvedCharacters; let last = last">
+              {{ character.name }}<span *ngIf="!last">, </span>
+            </span>
+          </div>
+        }
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    @if (timelineService.eventCount() === 0) {
+    <div class="empty-state">
+      <p>No events yet. Start adding events to your timeline!</p>
+    </div>
+    }
+    
+  </div>
+</div>
