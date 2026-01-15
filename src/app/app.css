@@ -82,3 +82,48 @@ h1 {
   margin-bottom: 5px;
   color: #666;
 }
+
+.app-container {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: #3f51b5;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.app-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.app-nav a.active {
+  background: white;
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}

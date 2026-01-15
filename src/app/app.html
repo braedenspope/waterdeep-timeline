@@ -1,22 +1,15 @@
 <div class="app-container">
-  <h1>{{ title }}</h1>
-  
-  <section>
-    <h2>Timeline View</h2>
-    <app-timeline></app-timeline>
-  </section>
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    
+    <nav class="app-nav">
+      <a routerLink="/timeline" routerLinkActive="active">Timeline</a>
+      <a routerLink="/daily" routerLinkActive="active">Daily</a>
+      <a routerLink="/calendar" routerLinkActive="active">Calendar</a>
+    </nav>
+  </header>
 
-  <hr>
-
-  <section>
-    <h2>Daily View</h2>
-    <app-daily></app-daily>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Calendar View</h2>
-    <app-calendar></app-calendar>
-  </section>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 </div>

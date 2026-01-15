@@ -1,5 +1,5 @@
 import { Component, signal, computed, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Event } from './models/event.model';
 import { Character } from './models/character.model';
@@ -14,7 +14,7 @@ import { Calendar } from './views/calendar/calendar';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, Timeline, Daily, Calendar],
+  imports: [CommonModule, Timeline, Daily, Calendar, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
